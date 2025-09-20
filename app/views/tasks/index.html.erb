@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Tasks</h1>
+
+  <%= link_to "New Task", new_task_path %>
+
+  <% if @tasks.any? %>
+    <ul>
+      <% @tasks.each do |task| %>
+        <li class="<%= 'completed' if task.completed %>">
+          <%= task.title %> - <%= task.completed ? "✔️" : "❌" %>
+
+          <div>
+            <%= link_to "Show", task_path(task) %> |
+            <%= link_to "Edit", edit_task_path(task) %> |
+            <%= link_to "Delete", task_path(task), 
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No tasks yet. <%= link_to "Create your first task!", new_task_path %></p>
+  <% end %>
+</div>

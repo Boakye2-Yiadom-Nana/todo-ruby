@@ -1,0 +1,4 @@
+<h2><%= @task.title %></h2>
+<h3><%= @task.description %></h3>
+<p>Status: <%= @task.completed ? "completed" : "Pending" %></p>
+<%= link_to "Back", tasks_path %>
